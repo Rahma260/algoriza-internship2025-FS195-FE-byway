@@ -1,5 +1,5 @@
 import React, { createContext, useState, useCallback, useMemo, useContext } from 'react';
-import { useShoppingAPI } from '../Hooks/UseShoppingAPI';
+import { useShoppingAPI } from '../Hooks/useShoppingApi';
 export const ShoppingContext = createContext(null);
 
 export const useShoppingContext = () => {
