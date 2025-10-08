@@ -5,7 +5,7 @@ export const useCourseAPI = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://byway.runasp.net/api/Category/GetAll?page=1&pageSize=100');
+      const response = await fetch('/api/Category/GetAll?page=1&pageSize=100');
       if (!response.ok) throw new Error('Failed to fetch categories');
       const data = await response.json();
       dispatch({ type: 'SET_CATEGORIES', payload: data.data || [] });
@@ -17,7 +17,7 @@ export const useCourseAPI = () => {
 
   const fetchInstructors = async () => {
     try {
-      const response = await fetch('http://byway.runasp.net/api/Instructor/GetAll?page=1&pageSize=100');
+      const response = await fetch('/api/Instructor/GetAll?page=1&pageSize=100');
       if (!response.ok) throw new Error('Failed to fetch instructors');
       const data = await response.json();
       dispatch({ type: 'SET_INSTRUCTORS', payload: data.data || [] });
@@ -30,7 +30,7 @@ export const useCourseAPI = () => {
   const fetchCourseById = async (id) => {
     dispatch({ type: 'SET_LOADING', payload: true });
     try {
-      const response = await fetch(`http://byway.runasp.net/api/Courses/GetById/${id}`);
+      const response = await fetch(`/api/Courses/GetById/${id}`);
       if (!response.ok) throw new Error('Failed to fetch course');
       const data = await response.json();
 
@@ -106,7 +106,7 @@ export const useCourseAPI = () => {
         formData.append(`contents[${index}].time`, content.time);
       });
 
-      const response = await fetch('http://byway.runasp.net/api/Courses/Create', {
+      const response = await fetch('/api/Courses/Create', {
         method: 'POST',
         body: formData
       });
@@ -152,7 +152,7 @@ export const useCourseAPI = () => {
         formData.append(`contents[${index}].time`, content.time);
       });
 
-      const response = await fetch(`http://byway.runasp.net/api/Courses/Update/${id}`, {
+      const response = await fetch(`/api/Courses/Update/${id}`, {
         method: 'PUT',
         body: formData
       });
@@ -179,7 +179,7 @@ export const useCourseAPI = () => {
   const fetchTopCourses = async () => {
     dispatch({ type: 'SET_LOADING', payload: true });
     try {
-      const response = await fetch('http://byway.runasp.net/api/Courses/GetTop10/Top10');
+      const response = await fetch('/api/Courses/GetTop10/Top10');
       if (!response.ok) throw new Error('Failed to fetch top courses');
       const data = await response.json();
       return data;

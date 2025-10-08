@@ -19,7 +19,7 @@ export const useCourseData = (fetchCoursesOnMount = false, initialFilters = {}) 
   const fetchCategories = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://byway.runasp.net/api/Category/GetAll?page=1&pageSize=100");
+      const res = await fetch("/api/Category/GetAll?page=1&pageSize=100");
       if (!res.ok) throw new Error('Failed to fetch categories');
       const data = await res.json();
       dispatch({ type: 'SET_CATEGORIES', payload: data.data || [] });
@@ -34,7 +34,7 @@ export const useCourseData = (fetchCoursesOnMount = false, initialFilters = {}) 
   const fetchInstructors = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://byway.runasp.net/api/Instructor/GetAll?page=1&pageSize=100");
+      const res = await fetch("/api/Instructor/GetAll?page=1&pageSize=100");
       if (!res.ok) throw new Error('Failed to fetch instructors');
       const data = await res.json();
       dispatch({ type: 'SET_INSTRUCTORS', payload: data.data || [] });

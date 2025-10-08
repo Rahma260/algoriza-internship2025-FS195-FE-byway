@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://byway.runasp.net/api';
+const API_BASE_URL = '/api';
 
 export const JobTitle = {
   FullstackDeveloper: 0,

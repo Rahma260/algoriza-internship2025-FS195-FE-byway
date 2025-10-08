@@ -69,7 +69,7 @@ export default function Dashboard() {
           fetchCategoryCount(),
         ]);
 
-        const courseResponse = await fetch('http://byway.runasp.net/api/Courses/GetAll?pageNumber=1&pageSize=1000');
+        const courseResponse = await fetch('/api/Courses/GetAll?pageNumber=1&pageSize=1000');
         if (!courseResponse.ok) throw new Error('Failed to fetch courses');
         const courseData = await courseResponse.json();
         const courseCount = courseData.data ? courseData.data.length : 0;

@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_BASE_URL = 'http://byway.runasp.net/api';
+const API_BASE_URL = '/api';
 const getAuthToken = () => localStorage.getItem('token');
 
 const handlePublicApiError = (error, defaultMessage) => {

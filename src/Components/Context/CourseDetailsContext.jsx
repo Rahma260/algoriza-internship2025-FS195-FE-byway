@@ -12,7 +12,7 @@ export const useCourseDetails = () => {
   return context;
 };
 
-const API_BASE_URL = 'http://byway.runasp.net/api';
+const API_BASE_URL = '/api';
 
 const getAuthToken = () => localStorage.getItem('token');
 

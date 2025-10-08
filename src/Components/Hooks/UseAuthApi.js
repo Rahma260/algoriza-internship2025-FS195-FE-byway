@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://byway.runasp.net/api/Auth';
+const API_BASE_URL = '/api/Auth';
 
 const api = axios.create({
   baseURL: API_BASE_URL,

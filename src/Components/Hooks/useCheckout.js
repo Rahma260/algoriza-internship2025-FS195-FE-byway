@@ -77,7 +77,7 @@ export const useCheckout = (setCurrentPage) => {
         return { success: false };
       }
 
-      const response = await fetch(`http://byway.runasp.net/api/Order/CreateOrder?studentId=${studentId}`, {
+      const response = await fetch(`/api/Order/CreateOrder?studentId=${studentId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(checkoutData)

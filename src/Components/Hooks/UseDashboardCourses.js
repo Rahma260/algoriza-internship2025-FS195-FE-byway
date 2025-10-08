@@ -41,7 +41,7 @@ export const useDashboardCourses = (
         params.append('rating', ratingFilter);
       }
 
-      const url = `http://byway.runasp.net/api/Courses/GetAll?${params.toString()}`;
+      const url = `/api/Courses/GetAll?${params.toString()}`;
 
       const response = await fetch(url);
       if (!response.ok) throw new Error("Failed to fetch courses");
@@ -63,10 +63,11 @@ export const useDashboardCourses = (
 
   const deleteCourse = async (id) => {
     try {
-      const res = await fetch(`http://byway.runasp.net/api/Courses/Delete/${id}`, {
+      const res = await fetch(`/api/Courses/Delete/${id}`, {
         method: "DELETE"
       });
-      if (!res.ok) throw new Error("Failed to delete course");
+      if (!res.ok) throw
+      new Error("Failed to delete course");
 
       setCourses(prev => prev.filter(c => c.id !== id));
       setTotalCount(prev => prev - 1);
