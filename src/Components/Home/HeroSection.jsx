@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useAuth } from "../Context/AuthContext";
-
+import { Link } from "react-router-dom";
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
@@ -30,13 +30,17 @@ function HeroSection() {
           </p>
 
           {!isAuthenticated && (
-            <motion.button
-              whileHover={{ scale: 1.08, rotate: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-lg font-semibold border-2 border-black bg-black text-white transition-all hover:text-black hover:bg-white"
-            >
-              Start your journey
-            </motion.button>
+            <Link to="/register">
+              <motion.button
+                whileHover={{ scale: 1.08, rotate: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-3 rounded-lg font-semibold border-2 border-black bg-black text-white transition-all hover:text-black hover:bg-white"
+              >
+
+                Start your journey
+
+              </motion.button>
+            </Link>
           )}
         </motion.div>
 

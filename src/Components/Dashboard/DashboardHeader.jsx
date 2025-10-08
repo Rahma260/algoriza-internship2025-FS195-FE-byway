@@ -69,16 +69,6 @@ const AdminHeader = ({
     navigate('/', { replace: true });
   };
 
-  const handleProfileClick = () => {
-    navigate('/dashboard/profile');
-    setShowDropdown(false);
-  };
-
-  const handleSettingsClick = () => {
-    navigate('/dashboard/settings');
-    setShowDropdown(false);
-  };
-
   const notifications = [
     { id: 1, text: 'New course enrollment', time: '2 hours ago', read: false },
     { id: 2, text: 'Instructor application received', time: '5 hours ago', read: false },
@@ -223,23 +213,6 @@ const AdminHeader = ({
                         ))}
                       </div>
                     )}
-                  </div>
-
-                  <div className="py-1">
-                    <button
-                      onClick={handleProfileClick}
-                      className="w-full px-3 sm:px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2 transition"
-                    >
-                      <User className="w-4 h-4 flex-shrink-0" />
-                      <span className="truncate">Profile</span>
-                    </button>
-                    <button
-                      onClick={handleSettingsClick}
-                      className="w-full px-3 sm:px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2 transition"
-                    >
-                      <Settings className="w-4 h-4 flex-shrink-0" />
-                      <span className="truncate">Settings</span>
-                    </button>
                   </div>
 
                   <div className="border-t border-gray-100 pt-1">

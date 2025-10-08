@@ -18,7 +18,7 @@ function Register() {
     email: '',
     password: '',
     confirmPassword: '',
-    role: '2'
+    role: 'student'
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

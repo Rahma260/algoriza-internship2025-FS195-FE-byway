@@ -74,7 +74,7 @@ function CategoriesSection() {
               sortedCategories.map((cat) => (
                 <motion.div
                   key={cat.id}
-                  className="p-6 border rounded-lg text-center hover:shadow-lg transition cursor-pointer"
+                  className="p-6 border rounded-lg text-center shadow-lg transition cursor-pointer"
                   variants={fadeInUp}
                   whileHover={{ scale: 1.08, rotate: 1 }}
                   onClick={() => {

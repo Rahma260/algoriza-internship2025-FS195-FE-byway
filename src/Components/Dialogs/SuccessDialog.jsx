@@ -1,11 +1,11 @@
-import { Check } from "lucide-react";
+import { Check, Link } from "lucide-react";
 import Navbar from "../Layout/Navbar";
 import Footer from "../Layout/Footer";
 
 export default function SuccessDialog() {
   return (
     <>
-
+      <Navbar />
       <div className="m-24">
         <div className="flex justify-center items-center">
           <div className="flex justify-center items-center rounded-full w-52 h-52 bg-green-600">
@@ -18,11 +18,13 @@ export default function SuccessDialog() {
           <button
             className=" mt-4 px-14 py-2 rounded-lg font-semibold border-2 border-black bg-black text-white transition-all hover:text-black hover:bg-white transition fade-in-out duration-500"
           >
-            Back to home
+            <Link to="/">
+              Back to home
+            </Link>
           </button>
         </div>
       </div>
-
+      <Footer />
     </>
   );
 }

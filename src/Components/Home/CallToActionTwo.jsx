@@ -17,15 +17,17 @@ function CallToActionTwo() {
             Learners around the world are launching new careers, advancing in
             their fields, and enriching their lives.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 rounded-lg font-semibold border-2 border-black bg-black text-white transition hover:text-black hover:bg-white"
-          >
-            <Link to="/courses">
+          <Link to="/courses">
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 rounded-lg font-semibold border-2 border-black bg-black text-white transition hover:text-black hover:bg-white"
+            >
+
               Checkout Courses →
-            </Link>
-          </motion.button>
+
+            </motion.button>
+          </Link>
         </motion.div>
         <motion.div
           className="flex justify-center"

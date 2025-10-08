@@ -49,14 +49,24 @@ export const InstructorProvider = ({ children }) => {
 
       const response = await axios.get(`${API_BASE_URL}/Instructor/GetAll`, { params });
 
-      const normalizedInstructors = response.data.data.map(inst => ({
-        ...inst,
-        id: inst.instructorId || inst.Id || inst._id
-      }));
+      const normalizedInstructors = response.data.data.map((inst, index) => {
+        // Try to find an ID from multiple possible fields
+        const id = inst.instructorId || inst.Id || inst._id || inst.id;
+
+        // If no ID is found, create a temporary one based on index
+        const finalId = id || `temp-id-${Date.now()}-${index}`;
+
+        return {
+          ...inst,
+          id: finalId,
+          // Ensure jobTitle is a number to match JobTitleNames
+          jobTitle: typeof inst.jobTitle === 'string' ? JobTitle[inst.jobTitle] || 0 : inst.jobTitle || 0
+        };
+      });
 
       setInstructors(normalizedInstructors);
-      setTotalInstructors(response.data.total);
-      setCurrentPage(response.data.page);
+      setTotalInstructors(response.data.total || normalizedInstructors.length);
+      setCurrentPage(response.data.page || 1);
     } catch (err) {
       setError('Failed to fetch instructors. Please try again.');
       console.error('Error fetching instructors:', err);
@@ -67,11 +77,19 @@ export const InstructorProvider = ({ children }) => {
 
   const fetchInstructorById = useCallback(async (id) => {
     try {
+      if (!id) {
+        throw new Error('Instructor ID is required.');
+      }
+      console.log(`Fetching instructor with ID: ${id}`);
       const response = await axios.get(`${API_BASE_URL}/Instructor/${id}`);
       return response.data;
     } catch (err) {
-      setError('Failed to load instructor details.');
-      console.error('Error loading instructor:', err);
+      console.error('Error fetching instructor:', err);
+      if (err.response && err.response.status === 404) {
+        setError('Instructor not found.');
+      } else {
+        setError('Failed to load instructor details.');
+      }
       return null;
     }
   }, []);
@@ -140,6 +158,10 @@ export const InstructorProvider = ({ children }) => {
 
   const deleteInstructor = useCallback(async (id) => {
     try {
+      if (!id) {
+        throw new Error('Instructor ID is required.');
+      }
+      console.log(`Deleting instructor with ID: ${id}`);
       await axios.delete(`${API_BASE_URL}/Instructor/${id}`);
 
       if (instructors.length === 1 && currentPage > 1) {
@@ -173,7 +195,6 @@ export const InstructorProvider = ({ children }) => {
       console.error('Error deleting instructor:', err);
       return { success: false, error: errorMessage };
     }
-
   }, [instructors.length, currentPage, searchTerm, filterJobTitle, fetchInstructors]);
 
   const fetchTopInstructors = useCallback(async () => {

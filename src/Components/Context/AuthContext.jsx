@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('userId', userData.userId);
         localStorage.setItem('userName', userData.userName);
         localStorage.setItem('userEmail', userData.email);
-        localStorage.setItem('userRole', userData.roles?.[0] || 'Student');
+        localStorage.setItem('userRole', userData.roles?.[1] || 'Student');
 
         setUser(userData);
       }

@@ -54,28 +54,66 @@ const DashboardInstructorsContent = () => {
   };
 
   const handleViewClick = async (instructor) => {
+    if (!instructor) {
+      setError('Invalid instructor data.');
+      return;
+    }
+
+    if (!instructor.id) {
+      setError('This instructor is missing an ID. Please contact support.');
+      return;
+    }
+
+    console.log(`Handling view click for instructor with ID: ${instructor.id}`);
     const fullInstructor = await fetchInstructorById(instructor.id);
+
     if (fullInstructor) {
       setSelectedInstructor(fullInstructor);
       openModal('view');
+    } else {
+      setError('Failed to fetch instructor details.');
     }
   };
 
   const handleEditClick = async (instructor) => {
+    if (!instructor) {
+      setError('Invalid instructor data.');
+      return;
+    }
+
+    if (!instructor.id) {
+      setError('This instructor is missing an ID. Please contact support.');
+      return;
+    }
+
+    console.log(`Handling edit click for instructor with ID: ${instructor.id}`);
     const fullInstructor = await fetchInstructorById(instructor.id);
+
     if (fullInstructor) {
       loadInstructor(fullInstructor);
       setSelectedInstructor(fullInstructor);
       openModal('edit');
+    } else {
+      setError('Failed to fetch instructor details.');
     }
   };
 
   const handleDeleteClick = (instructor) => {
+    if (!instructor) {
+      setError('Invalid instructor data.');
+      return;
+    }
+
+    if (!instructor.id) {
+      setError('This instructor is missing an ID. Please contact support.');
+      return;
+    }
+
+    console.log(`Handling delete click for instructor with ID: ${instructor.id}`);
     setSelectedInstructor(instructor);
     setDeleteError(null);
     openModal('delete');
   };
-
   const handleSaveInstructor = async (e) => {
     e.preventDefault();
     if (isSaving || formData.description.length < 100) return;

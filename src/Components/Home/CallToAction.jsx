@@ -31,15 +31,17 @@ function CallToAction() {
             Instructors from around the world teach millions of students on
             Byway. We provide the tools and skills to teach what you love.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 rounded-lg font-semibold border-2 border-black bg-black text-white transition hover:text-black hover:bg-white"
-          >
-            <Link to="/register">
+          <Link to="/register">
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 rounded-lg font-semibold border-2 border-black bg-black text-white transition hover:text-black hover:bg-white"
+            >
+
               Start Your Instructor Journey →
-            </Link>
-          </motion.button>
+
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>
