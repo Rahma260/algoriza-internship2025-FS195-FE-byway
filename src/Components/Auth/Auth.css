@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .auth-label {
+    @apply block text-gray-800 font-medium mb-1 text-sm sm:text-base md:text-lg text-left;
+  }
+
+  .auth-input {
+    @apply w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-5 sm:py-3 text-sm sm:text-base md:text-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-300 ease-in-out hover:shadow-md text-left;
+  }
+
+  .auth-button {
+    @apply px-4 sm:px-7 py-2 sm:py-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold flex items-center justify-center gap-2 border-2 border-black bg-black text-white transition-all duration-500 ease-in-out hover:scale-105 hover:text-black hover:bg-white hover:border-black hover:shadow-lg;
+  }
+
+  .auth-title {
+    @apply text-xl sm:text-3xl md:text-4xl font-bold text-black mb-4 sm:mb-8 md:mb-10 text-center transition-all duration-500 hover:text-indigo-600;
+  }
+
+  .auth-divider {
+    @apply flex items-center my-4 sm:my-6 text-gray-400 text-xs sm:text-sm md:text-base;
+  }
+
+  .auth-divider::before,
+  .auth-divider::after {
+    content: "";
+    @apply flex-grow border-t border-gray-200;
+  }
+
+  .auth-divider span {
+    @apply mx-2 sm:mx-3;
+  }
+
+  .auth-social {
+    @apply flex items-center justify-center gap-2 border border-gray-300 w-full rounded-lg px-3 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-md;
+  }
+
+  .auth-image {
+    @apply w-full h-40 sm:h-64 md:h-full object-cover rounded-md;
+  }
+}
