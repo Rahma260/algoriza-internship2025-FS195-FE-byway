@@ -66,8 +66,7 @@ export const useDashboardCourses = (
       const res = await fetch(`/api/Courses/Delete/${id}`, {
         method: "DELETE"
       });
-      if (!res.ok) throw
-      new Error("Failed to delete course");
+      if (!res.ok) throw new Error("Failed to delete course");
 
       setCourses(prev => prev.filter(c => c.id !== id));
       setTotalCount(prev => prev - 1);
